@@ -1,0 +1,16 @@
+{% extends "written_app/base.html" %}
+
+{% block title %}Logged out{% endblock title %}
+
+{% block page_header%}
+<h1 class="text-center">Logged out</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto p-3 m-4">
+    <p>
+        You have been successfully logged out.
+        You can <a href="{% url 'account:login' %}" class="fw-bold">log-in again</a>.
+    </p>
+</div>
+{% endblock content %}

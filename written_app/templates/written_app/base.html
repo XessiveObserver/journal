@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Journal - {% block title %}{% endblock title %}
+    </title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light-mb-4 border">
+        <div class="container-fluid">
+            <a href="{% url 'written_app:index' %}" class="navbar-brand fw-bolder">Notted</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mx-auto mb-2 mb-md-0 fw-bold">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'written_app:topics' %}" class="nav-link">Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'account:dashboard' %}" class="nav-link">dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'account:settings' %}" class="nav-link">settings</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'written_app:index' %}" class="nav-link">Home</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0 fw-bold">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="nav-link me-2 text-info">
+                        Hello {{ request.user.first_name|default:request.user.username }}.
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'account:logout' %}" class="nav-link">Logout</a>
+                </li>
+                {% else %}
+                
+                <li class="nav-item">
+                    <a href="{% url 'account:login' %}" class="nav-link">Log-in</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'account:register' %}" class="nav-link">Sign up</a>
+                </li> 
+                {% endif %}
+            </ul>
+        </div>
+    </div>        
+</nav>
+{% if messages %}    
+    {% bootstrap_messages %}
+{% endif %}
+    <main class="container">
+        <div class="p-2 mt-4 mb-2">
+            {% block page_header %}{% endblock page_header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+</body>
+</html>

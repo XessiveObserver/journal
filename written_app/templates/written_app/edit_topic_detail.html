@@ -1,0 +1,23 @@
+{% extends "written_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+Edit topic Detail
+{% endblock title %}
+
+{% block page_header%}
+<h1 class="text-center">Edit topic detail</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto shadow-lg p-3 m-4">
+    <p>
+        {{topic.name}}
+    </p>
+    <form action="{% url 'written_app:edit_topic_detail' topic_detail.slug topic_detail.id %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button name="submit" class="btn btn-success col-12">Edit topic detail</button>
+    </form>
+</div>
+{% endblock content %}

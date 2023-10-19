@@ -1,0 +1,21 @@
+{% extends "written_app/base.html" %}
+{% load django_bootstrap5 %}
+
+
+{% block title %}
+    Add topic
+{% endblock title %}
+
+{% block page_header%}
+<h1 class="text-center">Add topic</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto shadow-lg p-3 m-4">
+    <form action="{% url 'written_app:add_topic' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button name="submit" class="btn btn-primary col-12">Add topic</button>
+    </form>
+</div>
+{% endblock content %}

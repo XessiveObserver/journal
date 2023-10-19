@@ -1,0 +1,41 @@
+{% extends "written_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Log-in{% endblock title %}
+
+{% block page_header%}
+    <div class="col-sm-5 mx-auto">
+        <h1 class=" text-center fw-light p-2 mb-5 bg-light rounded">Log in to your account.</h1>
+
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto  p-4 m-4 rounded">
+    {% if form.errors %}
+        <p>
+            Your username and password didn't match.
+            Please try again.
+        </p>
+    {% else %}
+        <div>
+            Please, use the following form to log-in:
+            If you don't have an account <a href="{% url 'account:register' %}" class="fw-bold">register here</a>.
+
+        </div>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'account:login' %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="submit" value="login" class="btn btn-primary col-12">
+        </form>
+        <p>
+            <a href="{% url 'account:password_reset' %}" class="fw-bold">
+                Forgotten your password?
+            </a>
+        </p>
+    </div>
+</div>
+{% endblock content %}

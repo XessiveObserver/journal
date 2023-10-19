@@ -1,0 +1,22 @@
+{% extends "written_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Create an account{% endblock title %}
+
+{% block page_header%}
+<div class="col-sm-5 mx-auto">
+        <h1 class=" text-center p-2 mb-5 bg-light rounded">Create an account.</h1>
+
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto p-3 m-4 ">
+    <p>Please, sign up using the following form:</p>
+    <form method="post">
+        {% bootstrap_form user_form %}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account" class="btn btn-primary col-12"></p>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "written_app/base.html" %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block page_header %}
+    <div class="p-3 mb-4 bg-light border rounded-3">
+        <div class="container-fluid py-4">
+            <h1 class="display-3">Track your Journals.</h1>
+            <p class="lead">Make your own journals, and keep a list of the
+                topics you're journaling. Whenever you jorunal something new
+                about a topic, add a detailed summary of what you've journaled.</p>
+            <a class="btn btn-primary btn-lg mt-1" href="{% url 'account:register' %}">Register &raquo;</a>
+        </div>
+        <ul class="list-inline">
+            <li class="list-inline-item">This is a list item.</li>
+            <li class="list-inline-item">And another one.</li>
+            <li class="list-inline-item">But they're displayed inline.</li>
+        </ul>
+    </div>
+    {% endblock page_header %}
+{% block content %}
+    
+{% endblock content %}

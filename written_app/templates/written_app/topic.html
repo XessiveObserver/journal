@@ -1,0 +1,62 @@
+{% extends "written_app/base.html" %}
+
+{% block title %}
+Topic
+{% endblock title %}
+
+{% block page_header%}
+    <h1 class="text-center fw-light">Topic - {{ topic.name}}</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-8 d-flex flex-column mx-auto row g-3 pb-3 mb-4">
+    <div class="col-sm-12 rounded p-3 mb-5">
+        <p class="font-normal mb-3">
+           Topic - {{topic.name}}
+        </p>
+        <hr>
+        
+        <P class="d-inline d-block m-2 text-start">
+            <a href="{% url 'written_app:add_topic' %}" class="btn btn-primary">Add topic</a>
+            <a href="{% url 'written_app:edit_topic' topic.slug topic.id %}" class="btn btn-success">Edit topic</a>
+            <a href="{% url 'written_app:delete_topic' topic.slug topic.id %}" class="btn btn-danger">Delete topic</a>
+            <a href="{% url 'written_app:topics'%}" class="btn btn-info">Back to topics</a>
+        </P>
+    </div>
+
+    <h1 class="text-start fw-light">Topic detail for - {{ topic.name}} </h1>
+
+    <div class="col-sm-12 p-3 rounded">
+        {% for topic_detail in topic_details %}
+            <p>
+              Title - {{topic_detail.title}}
+            </p>
+            <p>
+              Content - {{topic_detail.content}}
+            </p>
+            <p>
+              Student Name - {{topic_detail.student}}
+            </p>
+            <p>
+              Date published - {{topic_detail.date_added|date}}
+            </p>
+            <hr>
+            <div class="d-inline d-block m-2 text-start">
+                <a href="{% url 'written_app:add_topic_detail' topic.slug topic.id %}" class="btn btn-primary m-1">Add topic detail</a>
+                <a href="{% url 'written_app:edit_topic_detail' topic_detail.slug topic_detail.id %}" class="btn btn-success m-1">Edit topic detail</a>
+                <a href="{% url 'written_app:delete_topic_detail' topic_detail.slug topic_detail.id %}" class="btn btn-danger m-1">Delete topic detail</a>
+                <a href="{% url 'written_app:topics'%}" class="btn btn-info m-1">Back to topics</a>
+            
+            </div>
+        {% empty %}
+            <p>
+                No topic details here add sum
+                <a href="{% url 'written_app:add_topic_detail' topic.slug topic.id %}" class="fw-bolder"> here</a>
+            </p>
+        {% endfor %}
+    </div>
+</div>
+
+   
+
+{% endblock content %}

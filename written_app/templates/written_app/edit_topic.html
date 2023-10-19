@@ -1,0 +1,24 @@
+{% extends "written_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    Edit topic
+{% endblock title %}
+
+{% block page_header%}
+<h1 class="text-center">Edit topic</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto shadow-lg p-3 m-4">
+    <p class="text-decoration-underline fw-bolder">
+        {{topic}}
+        
+    </p>
+    <form method="post" class="mt-5">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button name="submit" class="btn btn-success col-12">Edit topic</button>
+    </form>
+</div>
+{% endblock content %}

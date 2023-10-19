@@ -1,0 +1,55 @@
+{% extends "written_app/base.html" %}
+{% include topic.html %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block page_header%}
+    <div class="mx-auto">
+        <img src="{{ request.user.profile.photo_url|default_if_none:'#' }}"
+         alt="user profile pic" class="img-fluid rounded mx-auto d-block img-thumbnail"
+         height="200" width="200">
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-8 d-flex flex-column mx-auto row g-3 pb-3 mb-4">
+    <h1 class="text-center shadow-none fw-light p-3 mb-5 bg-light rounded">Dashboard</h1>
+    <div>
+        <ul class="list-inline text-center fw-normal">
+            <li class="list-inline-item">
+                <a href="{% url 'written_app:topics' %}"> see your topics</a>            
+            </li>
+            <li class="list-inline-item">
+                <a href="{% url 'account:edit' %}">edit your profile</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="{% url 'account:settings' %}">change your settings</a>
+            </li>
+        </ul>
+    </div>
+
+    <h1 class="text-center shadow-none p-3 fw-light mb-5 bg-light rounded">Biography</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date of birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ request.user.username }}</td>
+                <td>{{ request.user.first_name }}</td>
+                <td>{{ request.user.last_name }}</td>
+                <td>{{ request.user.email }}</td>
+                <td>{{ request.user.profile.date_of_birth }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+
+</div>
+{% endblock content %}

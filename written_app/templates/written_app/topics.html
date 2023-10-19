@@ -1,0 +1,26 @@
+{% extends "written_app/base.html" %}
+
+{% block title %}
+    Topics
+{% endblock title %}
+
+{% block page_header%}
+    <h1 class="text-center fw-bolder">Topics</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-6 d-flex flex-column mx-auto shadow-lg p-3 m-4">
+    <p class="text-end">
+        <a href="{% url 'written_app:add_topic' %}" class="btn btn-primary fw-bolder m-2"> + Add topic</a>
+    </p>
+    <hr>
+    {% for topic in topics %}
+        <p>
+            <a href="{% url 'written_app:topic' topic.slug topic.id %}" class="fw-bolder">{{topic}}</a>
+        </p>
+    {% empty %}
+        <p>No topics here ...</p>
+    {% endfor %}
+    
+</div>
+{% endblock content %}

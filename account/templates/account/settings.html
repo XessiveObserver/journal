@@ -1,0 +1,27 @@
+{% extends "written_app/base.html" %}
+
+{% block title %}Settings{% endblock title %}
+
+{% block page_header%}
+<div class="col-sm-5 mx-auto">
+    <h1 class=" text-center fw-light p-2 mb-5 bg-light rounded">Settings</h1>
+
+</div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 mx-auto fw-normal row g-3 pb-3 mb-4">
+    <p>
+         <a href="{% url 'account:edit' %}">edit profile</a>
+    </p>
+    <p>
+        <a href="{% url 'account:password_change' %}">change your password</a>
+    </p>
+    <p>
+        <a href="{% url 'written_app:topics' %}">topics</a>
+    </p>
+    <p>
+        <a href="{% url 'account:dashboard' %}">back to dashboard</a>
+    </p>
+</div>
+{% endblock content %}
