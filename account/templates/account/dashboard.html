@@ -5,17 +5,18 @@
 
 {% block page_header%}
     <div class="mx-auto">
-        <img src="{{ request.user.profile.photo_url|default_if_none:'#' }}"
+        <h1 class="text-center shadow-none fw-light p-3 bg-light w-75 mx-auto rounded">{{user.username|title}}'s - Dashboard</h1>
+        <img src="{{ request.user.profile.photo_url|default_if_none:'/media/default.jpg' }}"
          alt="user profile pic" class="img-fluid rounded mx-auto d-block img-thumbnail"
          height="200" width="200">
+         <hr class="mx-auto w-75">
     </div>
 {% endblock page_header%}
 
 {% block content %}
-<div class="col-sm-8 d-flex flex-column mx-auto row g-3 pb-3 mb-4">
-    <h1 class="text-center shadow-none fw-light p-3 bg-light rounded">Dashboard</h1>
+<div class="col-sm-8 d-flex flex-column mx-auto w-75 row g-3 pb-3 mb-4">
     <div>
-        <ul class="list-inline text-center fw-normal mb-5">
+        <ul class="list-inline text-center fw-normal mb-5 text-decoration-none">
             <li class="list-inline-item">
                 <a href="{% url 'written_app:topics' %}"> see your topics</a>            
             </li>

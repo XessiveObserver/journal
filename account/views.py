@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, UserRegistrationForm, \
     UserEditForm, ProfileEditForm
 from django.contrib.auth.decorators import login_required
@@ -91,3 +91,14 @@ def edit(request):
 def settings(request):
     """Application settings handled here"""
     return render(request, "account/settings.html")
+
+@login_required
+def delete_account(request):
+    """Deletes user account."""
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        logout(request)
+        return redirect("written_app:index")
+      
+    return render(request, "account/delete_account.html")

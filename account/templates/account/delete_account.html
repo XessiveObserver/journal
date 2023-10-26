@@ -1,0 +1,18 @@
+{% extends "written_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Delete your account{% endblock title %}
+
+{% block page_header%}
+<h1 class="text-center shadow-none fw-light p-3 bg-light text-danger rounded w-50 5 mx-auto">Delete my account</h1>
+{% endblock page_header%}
+
+{% block content %}
+<div class="col-sm-5 d-flex flex-column mx-auto p-3 m-4">
+    <p>Are you sure you want to delete your account {{user.username}}? This action cannot be undone.</p>
+    <form method="post">
+        {% csrf_token %}
+        <p><input type="submit" value="Delete my account" class="btn btn-danger col-12"></p>
+    </form>
+</div>
+{% endblock content %}

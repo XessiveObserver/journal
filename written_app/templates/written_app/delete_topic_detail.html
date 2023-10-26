@@ -4,11 +4,11 @@ Delete topic detail
 {% endblock title %}
 
 {% block page_header%}
-<h1 class="text-center">Delete topic detail</h1>
+<h1 class="text-center fw-light bg-light w-50 mx-auto rounded text-danger">Delete topic detail</h1>
 {% endblock page_header%}
 
 {% block content %}
-<div class="col-sm-5 d-flex flex-column mx-auto shadow-lg p-3 m-4">
+<div class="col-sm-6 d-flex flex-column mx-auto border border-danger rounded p-3 m-4">
     <p class="text-danger fw-bold">Are you sure you want to delete {{ delete_topic_detail.title }}"?</p>
     <form method="post">
         {% csrf_token %}

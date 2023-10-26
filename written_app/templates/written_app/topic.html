@@ -5,11 +5,11 @@ Topic
 {% endblock title %}
 
 {% block page_header%}
-    <h1 class="text-center fw-light">Topic - {{ topic.name}}</h1>
+    <h1 class="text-center fw-light bg-light w-50 p-2 mx-auto rounded">Topic - {{ topic.name}}</h1>
 {% endblock page_header%}
 
 {% block content %}
-<div class="col-sm-8 d-flex flex-column mx-auto row g-3 pb-3 mb-4">
+<div class="col-sm-6 d-flex flex-column mx-auto row g-3 pb-3 mb-4">
     <div class="col-sm-12 rounded p-3 mb-5">
         <p class="font-normal mb-3">
            Topic - {{topic.name}}
@@ -24,7 +24,7 @@ Topic
         </P>
     </div>
 
-    <h1 class="text-start fw-light">Topic detail for - {{ topic.name}} </h1>
+    <h1 class="text-start fw-light bg-light p-3 mx-auto rounded">Topic detail for - {{ topic.name}} </h1>
 
     <div class="col-sm-12 p-3 rounded">
         {% for topic_detail in topic_details %}
